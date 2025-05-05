@@ -1,0 +1,367 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# CMPINF 2100: Midterm exam\n",
+    "\n",
+    "## YOUR NAME HERE !!!!\n",
+    "\n",
+    "You may add as many code and markdown cells as you see fit to answer the questions.\n",
+    "\n",
+    "## You are NOT allowed to collaborate with anyone on this exam.\n",
+    "\n",
+    "### Overview\n",
+    "\n",
+    "You will demonstrate your ability to merge, group, summarize, visualize, and find patterns in data. This exam uses data associated with a manufacturing example. An overview of the goals, considerations, CSV files, and variables within the data is provided in a presentation on Canvas. Please read through those slides before starting the exam.\n",
+    "\n",
+    "The data are provided in 5 separate CSV files. The CSV files are available on Canvas. You **MUST** download the files and save them to the same working directory as this notebook.\n",
+    "\n",
+    "The specific instructions in this notebook tell you when you must JOIN the data together. Please read the problems carefully.\n",
+    "\n",
+    "The overall objective of this exam is to JOIN data from multiple files in order to explore and find interesting patterns between the machine operating conditions and supplier information. You will report your findings within this notebook by displaying Pandas DataFrames and statistical visualizations via Seaborn and matplotlib when necessary.  "
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Import modules\n",
+    "\n",
+    "You are permitted to use the following modules on this exam."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import numpy as np\n",
+    "import pandas as pd\n",
+    "import matplotlib.pyplot as plt\n",
+    "\n",
+    "import seaborn as sns"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "You may also use the following functions from scikit-learn on this exam."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "from sklearn.preprocessing import StandardScaler\n",
+    "from sklearn.cluster import KMeans\n",
+    "from sklearn.decomposition import PCA"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "You may also use the following sub module from SCIPY."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "from scipy.cluster import hierarchy"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "You are **NOT** permitted to use any other modules or functions. However, you **ARE** permitted to create your own user defined functions if you would like."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Problem 01\n",
+    "\n",
+    "The file names for the 3 machine data sets are provided as strings in the cell below. You are required to read in the CSV files and assign the data to the `m01_df`, `m02_df`, and `m03_df` objects. The data from machine 1 will therefore be associated with `m01_df`, machine 2 is associated with `m02_df`, and machine 3 is associated with `m03_df`.  \n",
+    "\n",
+    "In this problem you must explore each of the three machine data sets. \n",
+    "\n",
+    "You must perform the following **ESSENTIAL** activities:\n",
+    "\n",
+    "* How many rows and columns are in each data set? \n",
+    "* What are the names and data types for each column?\n",
+    "* How many unique values are there for each column?\n",
+    "* How many missing values are there for each column?\n",
+    "\n",
+    "You must visually explore the MARGINAL behavior of the variables in the data. You must use visualizations appropriate for the DATA TYPE of the columns.\n",
+    "\n",
+    "You must visually explore RELATIONSHIPS between variables in the data. You must use visualizations appropriate for the DATA TYPES. You must make sure that your visualizations can answer the following questions:\n",
+    "\n",
+    "* How many unique values for `Batch` are associated with each MACHINE (data set)?\n",
+    "* How many cell phone cases are associated with each `Batch` value for each MACHINE (data set)?\n",
+    "* Do the summary statistics of the OPERATING VARIABLES `x1` through `x4` vary across the three MACHINES?\n",
+    "* Do the summary statistics of the OPERATING VARIABLES `x1` through `x4` vary across the `Batch` values?\n",
+    "* Do the relationships between the OPERATING VARIABLES `x1` through `x4` vary across the three MACHINES?\n",
+    "* Do the relationships between the OPERATING VARIABLES `x1` through `x4` vary across the `Batch` values?\n",
+    "\n",
+    "At the conclusion of this problem, you **MUST** CONCATENATE the 3 MACHINE data sets into a single DataFrame. The single DataFrame must be named `machine_df`. Before concatenating, you **MUST** add a column `machine_id` to each DataFrame with the correct index value for that machine (1, 2, or 3). The concatenating DataFrame variable name is provided as a reminder to you below. \n",
+    "\n",
+    "You may add as many markdown and code cells as you see fit to answer this question. Include markdown cells stating what you see in the figures and why you selected to use them.\n",
+    "\n",
+    "#### SOLUTION"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Define the files's for the 3 machine level CSV files\n",
+    "\n",
+    "file_m01 = 'midterm_machine_01.csv'\n",
+    "\n",
+    "file_m02 = 'midterm_machine_02.csv'\n",
+    "\n",
+    "file_m03 = 'midterm_machine_03.csv'"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# read in the CSV files and name them accordingly\n",
+    "\n",
+    "m01_df =\n",
+    "\n",
+    "m02_df = \n",
+    "\n",
+    "m03_df ="
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# concatenate the 3 DataFrames into a single DataFrame which includes the `machine_id` variable\n",
+    "\n",
+    "machine_df = "
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Problem 02\n",
+    "\n",
+    "The supplier batch data set file name is provided for you below. You must read in the CSV file and assign the data set to the `batch_df` object. \n",
+    "\n",
+    "You must perform the following **ESSENTIAL** activities:\n",
+    "\n",
+    "* How many rows and columns are in the data? \n",
+    "* What are the names and data types for each column?\n",
+    "* How many unique values are there for each column?\n",
+    "* How many missing values are there for each column?\n",
+    "\n",
+    "You must visually explore the MARGINAL behavior of the variables in the data. You must use visualizations appropriate for the DATA TYPE of the columns.\n",
+    "\n",
+    "You must visually explore RELATIONSHIPS between variables in the data. You must use visualizations appropriate for the DATA TYPES. You must make sure that your visualizations can answer the following questions:\n",
+    "* Do the summary statistics for `Density` depend on the `Supplier`?\n",
+    "* Does the average `Density` depend on the `Supplier`?\n",
+    "* How does `Density` relate to `Batch` for each `Supplier`?\n",
+    "\n",
+    "After exploring the `batch_df` DataFrame, you **MUST** JOIN/MERGE the `batch_df` DataFrame with the `machine_df` DataFrame. Assign the merged DataFrame to the `dfa` DataFrame.\n",
+    "\n",
+    "You can now explore the relationships between the MACHINE OPERATIONAL VARIABLES and the SUPPLIERS! You must use visualizations to explore the following relationships:\n",
+    "* Explore if the summary statistics of the 4 OPERATING VARIABLES `x1` through `x4` vary across `Batch` for each MACHINE given each `Supplier`. Your figures MUST use `Batch` as the x-axis variable.\n",
+    "* Explore if the relationships between the 4 OPERATING VARIABLES `x1` through `x4` vary across `Supplier`.\n",
+    "\n",
+    "You may add as many markdown and code cells as you see fit to answer this question.\n",
+    "\n",
+    "#### SOLUTION"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# define the batch supplier file\n",
+    "batch_file = 'midterm_supplier.csv'"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# read in the batch supplier data set\n",
+    "\n",
+    "batch_df ="
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# merge the batch supplier data set with the (concatenated) machine data set\n",
+    "\n",
+    "dfa ="
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Problem 03\n",
+    "\n",
+    "The DROP TEST result data set file name is provided for you below. You must read in the CSV file and assign the dta set to the `test_df` object. \n",
+    "\n",
+    "You must perform the following **ESSENTIAL** activities:\n",
+    "\n",
+    "* How many rows and columns are in the data? \n",
+    "* What are the names and data types for each column?\n",
+    "* How many unique values are there for each column?\n",
+    "* How many missing values are there for each column?\n",
+    "\n",
+    "You must visually explore the MARGINAL behavior of the variables in the data. You must use visualizations appropriate for the DATA TYPE of the columns.\n",
+    "\n",
+    "You must visually explore RELATIONSHIPS between variables in the data. You must use visualizations appropriate for the DATA TYPES. You must make sure that your visualizations can answer the following questions:\n",
+    "* Count the number of times each unique value of `Result` occurs for each `test_group_id` value.\n",
+    "\n",
+    "After exploring the `test_df` DataFrame, you **MUST** JOIN/MERGE the `test_df` DataFrame with the `dfa` DataFrame. Assign the merged DataFrame to the `dfb` DataFrame. You **MUST** answer the following:\n",
+    "* How many rows remain using the DEFAULT joining procedure?\n",
+    "\n",
+    "You may add as many markdown and code cells as you see fit to answer this question. \n",
+    "\n",
+    "#### SOLUTION"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# define the test data set file name\n",
+    "test_file = 'midterm_test.csv'"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# read in the test data set\n",
+    "\n",
+    "test_df ="
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# merge test_df with the dfa object\n",
+    "\n",
+    "dfb = "
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Problem 04\n",
+    "\n",
+    "You must now examine the merged `dfb` object and answer the following:\n",
+    "\n",
+    "* Count the number of times each unique value of `Result` occurs for each value of `machine_id`.\n",
+    "* Count the number of times each unique value of `Result` occurs for each value of `Supplier`.\n",
+    "* Visualize the number of times each unique value of `Result` occurs per `Batch` for each value of `machine_id`.\n",
+    "* Visualize the number of times each unique value of `Result` occurs per `Batch` for each value of `machine_id` and `Supplier`.\n",
+    "* Calculate the PROPORTION of times the cell phone case failed the test in each `Batch` per `machine_id`.\n",
+    "* Visualize the PROPORTION of times the cell phone case failed the test in each `Batch` per `machine_id` and for each unique value of `Supplier`.\n",
+    "\n",
+    "*HINT*: Remember that a FAILED test is encoded as `Result == 1`. How can you calculate the PROPORTION of times `Result == 1`?\n",
+    "\n",
+    "Add as many cells as you see fit to answer this question.\n",
+    "\n",
+    "#### SOLUTION"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Problem 05\n",
+    "\n",
+    "You must cluster the rows of `dfb` using the 4 operational variables `x1` through `x4`. You must decide how many clusters to use and describe how you made that choice. You may use KMeans OR Hierarchical clustering. Include any figures that helped you make that choice.\n",
+    "\n",
+    "Visualize your cluster analysis results by:\n",
+    "* Plotting the number of observations per cluster.\n",
+    "* Visualizing the relationships between the operational variables GIVEN the cluster.\n",
+    "\n",
+    "You are interested in the PROPORTION of cell phone cases that failed the DROP TEST. Are any of the clusters associated with higher failure PROPORTIONS than others? Based on your visualizations how would you describe that cluster?\n",
+    "\n",
+    "Add as many cells as you see fit to answer this question.\n",
+    "\n",
+    "#### SOLUTION"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3 (ipykernel)",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.8.17"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 4
+}
