@@ -1,0 +1,71 @@
+# University of Pittsburgh - School of Computing and Information 
+# Master of Data Science
+# Applied Predictive Modeling
+# Assignment #1
+# KNN-Regression / Code TEMPLATE
+
+# Use the following code to compute the answer to the KNN-Regression questions
+# You should only modify the code within START/END comments
+
+import pandas as pd
+import numpy as np
+from sklearn.preprocessing import StandardScaler
+from scipy.spatial.distance import euclidean
+
+###########################################################################
+# Step 1: Create the DataFrame
+data = pd.DataFrame({
+    'square_feet': [1500, 2100, 1650, 2500, 1850, 1400, 2200, 1700, 1950, 2300],
+    'year_built': [1998, 2005, 1980, 2010, 1995, 1987, 2015, 2000, 1992, 2008],
+    'price': [350, 480, 320, 610, 400, 290, 650, 370, 410, 590]
+})
+
+###########################################################################
+# Step 2: Standardize the features
+features = ['square_feet', 'year_built']
+
+### PUT YOUR CODE HERE TO PERFORM STANDARDIZATION, as in Module 2 / START ###
+
+
+
+### PUT YOUR CODE HERE TO PERFORM STANDARDIZATION, as in Module 2 / END #####
+
+
+###########################################################################
+# Step 3: Standardize the query point
+query_point = np.array([[1800, 1990]])
+
+### PUT YOUR CODE HERE TO PERFORM STANDARDIZATION for the query point / START ###
+
+
+### PUT YOUR CODE HERE TO PERFORM STANDARDIZATION for the query point / END #####
+
+
+
+###########################################################################
+# Step 4: Compute Euclidean distances
+
+### PUT YOUR CODE HERE TO COMPUTE ALL THE EUCLIDEAN DISTANCES / START ###
+
+
+### PUT YOUR CODE HERE TO COMPUTE ALL THE EUCLIDEAN DISTANCES / END #####
+
+
+
+###########################################################################
+# Step 5: Get 3 nearest neighbors
+
+### PUT YOUR CODE HERE TO IDENTIFY AND PRINT THE CLOSEST 3 NEIGHBORS / START ###
+
+### PUT YOUR CODE HERE TO IDENTIFY AND PRINT THE CLOSEST 3 NEIGHBORS / END #####
+
+
+
+###########################################################################
+# Step 6: Predict price
+
+### PUT YOUR CODE HERE TO COMPUTE AND PRINT THE PREDICTED PRICE / START ###
+
+### PUT YOUR CODE HERE TO COMPUTE AND PRINT THE PREDICTED PRICE / END #####
+
+
